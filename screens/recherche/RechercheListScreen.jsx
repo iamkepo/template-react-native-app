@@ -83,6 +83,7 @@ class RechercheListScreen extends React.Component {
   render(){
     return (
       <SafeAreaView style={styles.container}>
+        <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
 
         <View style={styles.searchContainer}>
 

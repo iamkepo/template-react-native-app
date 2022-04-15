@@ -6,15 +6,9 @@ import { StyleSheet,
   StatusBar, 
   ActivityIndicator, 
   Text, 
-  View, 
-  Image,
-  TextInput,
-  ScrollView,
   ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Entypo } from 'react-native-vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import Checkbox from 'expo-checkbox';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
