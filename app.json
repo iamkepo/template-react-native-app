@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "template-reate-native-app",
-    "slug": "template-reate-native-app",
+    "name": "template-react-native-app",
+    "slug": "template-react-native-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,14 +19,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.kepo.templatereatenativeapp"
+      "bundleIdentifier": "com.kepo.templatereactnativeapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.kepo.templatereatenativeapp"
+      "package": "com.kepo.templatereactnativeapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
