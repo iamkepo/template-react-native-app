@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import monReducer from './store/ActivityReducer';
 
-import AnimatedAppLoader from './components/AnimatedAppLoader';
-import MainNavigator from './navigations/MainNavigator';
+import AnimatedAppLoader from './splash/AnimatedAppLoader';
+import MainNavigator from './navigators/MainNavigator';
 
 const store = createStore(monReducer);
 const Stack = createStackNavigator();
