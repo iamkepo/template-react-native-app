@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, StyleSheet } from 'react-native';
-import ModalComponent from '../components/ModalComponent';
+import { StyleSheet } from 'react-native';
 
 import { init } from '../store/Reducer';
 
+import AnimatedComponent from '../components/AnimatedComponent';
 import ScreenTemplate from '../templates/ScreenTemplate';
 
 class HomeScreen extends React.Component {
@@ -16,11 +16,6 @@ class HomeScreen extends React.Component {
     this.route = this.props.route;
   };
 
-  setoption = (buttonIndex) => {
-    if (buttonIndex == 1) {
-      this.setState({modal: true})
-    }
-  };
   
   render(){
     return (
@@ -30,12 +25,9 @@ class HomeScreen extends React.Component {
         title="HomeScreen"
         right={true}
         setoption={(index) => this.setoption(index)}
+        onRefresh={() => console.log(false)}
       >
-        <Button title='go to Detail' onPress={()=> this.navigation.navigate('DetailScreen')} />
-        {
-          this.state.modal &&
-          <ModalComponent />
-        }
+        <AnimatedComponent navigation={this.navigation} />
       </ScreenTemplate>
     );
   }
