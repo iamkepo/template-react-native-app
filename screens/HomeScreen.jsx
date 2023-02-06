@@ -23,9 +23,6 @@ class HomeScreen extends React.Component {
         route={this.route} 
         navigation={this.navigation} 
         title="HomeScreen"
-        right={true}
-        setoption={(index) => this.setoption(index)}
-        onRefresh={() => console.log(false)}
       >
         <AnimatedComponent navigation={this.navigation} />
       </ScreenTemplate>

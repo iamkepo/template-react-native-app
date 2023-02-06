@@ -28,6 +28,8 @@ class DetailScreen extends React.Component {
         navigation={this.navigation} 
         title="DetailScreen"
         left={true}
+        right={true}
+        setoption={(index) => this.setoption(index)}
       >
         {
           this.state.modal &&

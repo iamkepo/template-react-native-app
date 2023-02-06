@@ -28,7 +28,7 @@ function AddPostComponent(props) {
   return (
     <View style={styles.container}>
       <TouchableOpacity 
-        onPress={()=> false} 
+        onPress={()=> props.navigation.navigate('DetailScreen')} 
         style={[styles.newpost, {transform: [{translateX: camera}], zIndex: click ? 4 : 1, width: click ? 0 : 60,}]}
       >
         <Entypo name="camera" size={25} color="#FFF"/>
@@ -65,12 +65,11 @@ const styles = StyleSheet.create({
     width: "95%",
     height: 60,
     position: "absolute",
-    bottom: 10,
+    bottom: 80,
     zIndex: 5,
     flexDirection: "row",
     alignItems: 'center',
     justifyContent: "space-between",
-    backgroundColor: "rgba(0, 0, 0, 0.2)",
   },
   newpost: {
     width: 60,

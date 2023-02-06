@@ -55,7 +55,7 @@ class RefreshTemplate extends React.Component {
 const styles = StyleSheet.create({
   sous: {
     width: screen.width,
-    height: screen.height-normalize(50),
+    height: screen.height-normalize(80),
     alignItems: 'center',
     justifyContent: "flex-start",
     backgroundColor: "#EEE"
