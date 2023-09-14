@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setStateAction } from './ActivityActions';
+import { toastAction, alertAction, userOneAction, userAction } from './ActivityActions';
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    setStateAction
+    toastAction,
+    alertAction,
+    userOneAction,
+    userAction
   }, dispatch)
 );
 

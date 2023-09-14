@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
+import { StyleSheet, ScrollView, RefreshControl} from 'react-native';
 
 import { init } from '../store/Reducer';
-import { normalize } from '../utils/fonts';
-import { wait, screen } from '../utils/helper';
+import { wait } from '../utils/helper';
 
 class RefreshTemplate extends React.Component {
   constructor (props) {
@@ -15,16 +14,12 @@ class RefreshTemplate extends React.Component {
     this.route = this.props.route;
   }
   componentDidMount(){
-    if (this.props.onRefresh) {
-      this.onRefresh()
-    }
+    this.onRefresh()
   }
   onRefresh() {
     this.setState({refreshing: true});
 
-    if (this.props.onRefresh) {
-      this.props.onRefresh()
-    }
+    this.props.onRefresh()
 
     wait(2000).then(() =>{ this.setState({refreshing: false}) ;});
   }
@@ -40,11 +35,7 @@ class RefreshTemplate extends React.Component {
         }
       >
 
-        <View style={styles.sous}>
-
-          {this.props.children}
-          
-        </View>
+        {this.props.children}
 
       </ScrollView>
     );
@@ -53,12 +44,5 @@ class RefreshTemplate extends React.Component {
 
 
 const styles = StyleSheet.create({
-  sous: {
-    width: screen.width,
-    height: screen.height-normalize(80),
-    alignItems: 'center',
-    justifyContent: "flex-start",
-    backgroundColor: "#EEE"
-  },
 });
 export default init(RefreshTemplate);

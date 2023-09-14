@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 
 import { init } from '../store/Reducer';
 
-import AnimatedComponent from '../components/AnimatedComponent';
 import ScreenTemplate from '../templates/ScreenTemplate';
 
-class HomeScreen extends React.Component {
+
+class Tab1Screen extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -15,16 +15,16 @@ class HomeScreen extends React.Component {
     this.navigation = this.props.navigation;
     this.route = this.props.route;
   };
-
   
   render(){
     return (
       <ScreenTemplate 
         route={this.route} 
         navigation={this.navigation} 
-        title="HomeScreen"
+        theme={this.props.theme}
       >
-        <AnimatedComponent navigation={this.navigation} />
+        <Button title='success toast' onPress={()=> this.props.toastAction({message: 'success', type: 'success'})} />
+        <Button title='error toast' onPress={()=> this.props.toastAction({message: 'danger', type: 'danger'})} />
       </ScreenTemplate>
     );
   }
@@ -33,4 +33,4 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({});
 
-export default init(HomeScreen);
+export default init(Tab1Screen);

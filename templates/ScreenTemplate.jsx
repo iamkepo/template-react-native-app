@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, StatusBar, View} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 
 import { init } from '../store/Reducer';
 
@@ -10,6 +9,7 @@ import RefreshComponent from '../components/RefreshComponent';
 
 import { normalize } from '../utils/fonts';
 import { screen } from '../utils/helper';
+import { bgThemePrimary, bgThemeSecondary, reverseTheme } from '../utils/styles';
 
 class ScreenTemplate extends React.Component {
   constructor (props) {
@@ -24,32 +24,34 @@ class ScreenTemplate extends React.Component {
 
   render(){
     return (
-      <ActionSheetProvider>
-        <SafeAreaView style={styles.container}>
-          <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-          
-          <HeaderComponent 
-            route={this.route} 
-            navigation={this.navigation} 
-            title={this.props.title}
-            left={this.props.left}
-            right={this.props.right}
-            setoption={this.props.setoption}
-          />
-          {
-            this.props.onRefresh ?
+      <SafeAreaView style={[styles.container, {backgroundColor: bgThemePrimary(this.props.data.user.theme)}]}>
+        <StatusBar 
+          backgroundColor={bgThemeSecondary(this.props.data.user.theme)} 
+          barStyle={reverseTheme(this.props.data.user.theme)+"-content"} 
+        />
+        
+        {this.props.title && <HeaderComponent 
+          route={this.route} 
+          navigation={this.navigation} 
+          title={this.props.title}
+          left={this.props.left}
+          right={this.props.right}
+        />}
+        {
+          this.props.onRefresh ?
 
-            <RefreshComponent onRefresh={()=> this.props.onRefresh} >
-              {this.props.children}
-            </RefreshComponent>
-            :
-            <View style={styles.sous}>
+          <RefreshComponent onRefresh={()=> this.props.onRefresh()} >
+            <View style={[styles.sous, {backgroundColor: bgThemeSecondary(this.props.data.user.theme)}]}>
               {this.props.children}
             </View>
-          }
+          </RefreshComponent>
+          :
+          <View style={[styles.sous, {backgroundColor: bgThemeSecondary(this.props.data.user.theme)}]}>
+            {this.props.children}
+          </View>
+        }
 
-        </SafeAreaView >
-      </ActionSheetProvider>
+      </SafeAreaView >
     );
   }
 }
@@ -60,14 +62,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: "flex-start",
-    backgroundColor: "#FFF"
   },
   sous: {
     width: screen.width,
-    height: screen.height-normalize(80),
-    alignItems: 'center',
+    minHeight: screen.height,
+    paddingTop: normalize(15),
+    paddingHorizontal: normalize(15),
+    paddingBottom: normalize(100),
+    alignItems: 'flex-start',
     justifyContent: "flex-start",
-    backgroundColor: "#EEE"
+    // borderColor: 'red',
+    // borderWidth: 1
   },
 });
 export default init(ScreenTemplate);

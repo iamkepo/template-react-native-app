@@ -1,14 +1,26 @@
-export const setStateAction = (index, value) => (
+export const toastAction = value => (
   {
-    type: 'STATE',
-    index: index,
-    value: value
+    type: 'TOAST',
+    payload: value
   }
 );
-export const userAction = index => (
+export const alertAction = value => (
+  {
+    type: 'ALERT',
+    payload: value
+  }
+);
+export const userAction = value => (
   {
     type: 'USER',
-    payload: index
+    payload: value
+  }
+);
+export const userOneAction = (index, value)=> (
+  {
+    type: 'USERONE',
+    key: index,
+    payload: value
   }
 );
 
